@@ -20,17 +20,20 @@ export interface ProductsType {
 const initialState: ProductsType = { products: [] };
 
 export const productApiSlice = createApi({
-    reducerPath: "api",
+    reducerPath: "Product Api",
     baseQuery: fetchBaseQuery({
         baseUrl: "https://fakestoreapi.com",
     }),
     endpoints(builder) {
         return {
             fetchProducts: builder.query<ProductType[], number | void>({
-                query(limit = 10) {
+                query(limit: number = 10) {
                     return `/products?limit=${limit}`;
                 },
             }),
+            // addProducts: builder.mutation({
+            //     query: ()
+            // })
         };
     },
 });
